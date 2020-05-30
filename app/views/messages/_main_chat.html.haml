@@ -1,0 +1,42 @@
+.chat-main
+  .header
+    .header-info
+      .header-info__title
+        groupname
+      %ul.header-info__members
+        Member : 
+        %li.member
+          membername1
+        %li.member
+          membername2
+    = link_to "#", class: "header-edit__botton" do
+      Edit
+  
+  .messages
+    .message
+      .message-source
+        .message-source__user-name
+          membername1
+        .message-source__date
+          yyyy/mm/dd(Day of the week) hh:mm:ss
+      .message-content
+        .message-content__detail
+          message, picture
+    .message
+      .message-source
+        .message-source__user-name
+          membername2
+        .message-source__date
+          yyyy/mm/dd(Day of the week) hh:mm:ss
+      .message-content
+        .message-content__detail
+          message, picture
+      
+  .form
+    %form
+      %input.form__message{type:"text",placeholder:"type a message"}
+        .form__mask
+          %label.form__mask__image
+            =icon('fa','image',class: 'icon')
+            %input.hidden{type: 'file'}
+      %input.form__submit{type: 'submit', value: 'Send'}
