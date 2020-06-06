@@ -2,41 +2,24 @@
   .header
     .header-info
       .header-info__title
-        groupname
+        = @group.name
       %ul.header-info__members
         Member : 
-        %li.member
-          membername1
-        %li.member
-          membername2
-    = link_to "groups/1/edit", class: "header-edit__botton" do
+        - @group.group_users.each do |group_user|
+          %li.member
+            =group_user.user.name
+
+    = link_to edit_group_path(@group.id), class: "header-edit__botton" do
       Edit
   
   .messages
-    .message
-      .message-source
-        .message-source__user-name
-          membername1
-        .message-source__date
-          yyyy/mm/dd(Day of the week) hh:mm:ss
-      .message-content
-        .message-content__detail
-          message, picture
-    .message
-      .message-source
-        .message-source__user-name
-          membername2
-        .message-source__date
-          yyyy/mm/dd(Day of the week) hh:mm:ss
-      .message-content
-        .message-content__detail
-          message, picture
-      
+    = render partial: 'message', collection: @messages
+
   .form
-    %form
-      %input.form__message{type:"text",placeholder:"type a message"}
-        .form__mask
-          %label.form__mask__image
-            =icon('fa','image',class: 'icon')
-            %input.hidden{type: 'file'}
-      %input.form__submit{type: 'submit', value: 'Send'}
+    = form_for [@group, @message] do |f|
+      = f.text_field :body, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fa', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
