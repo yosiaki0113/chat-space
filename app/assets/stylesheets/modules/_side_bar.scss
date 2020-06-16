@@ -28,9 +28,11 @@
     background-color: $side_blue_light;
     height: calc(100vh - 100px);
     padding: 0 20px;
-    .group{
+    text-decoration: none;
+    
+    .group {
       padding: 20px 0 40px;
-      &__name{
+      &__name {
         color: $white;
         font-size: $side_group_name;
       }
@@ -39,6 +41,9 @@
         font-size: $side_group_message;
         margin-top: 5px;
       }
+    }
+    .group a {
+      text-decoration: none;
     }
   }
 }
