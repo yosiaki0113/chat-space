@@ -77,21 +77,29 @@
     .form{
       background-color: #DDDDDD;
       height: 90px;
-      padding: 20px 50px 20px 40px;
-      &__message{
-        position: relative;
-        float: left;
-        border: none;
-        height: 50px;
-        width: calc(100% - 160px);
-        padding-left: 10px;
+      padding: 20px 40px;
+      width: calc(100vw - 300px);
+      .new_message{
+        display: flex;
       }
+
       &__mask{
-        float: left;
-        margin: 0 0 0 auto;
+        position: relative;
+        display: flex;
         background-color: $white;
         height: 50px;
+        width: calc(100% - 115px);
+
+        &__message{
+          border: none;
+          height: 50px;
+          width: calc(100%);
+          padding: 0 40px 0 10px;
+        }
+  
         &__image{
+          margin-left: calc(100% - 40px);
+          position: absolute;
           font-size: 20px;
           line-height: 50px;
           padding: 0 10px;
